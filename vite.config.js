@@ -14,12 +14,6 @@ export default defineConfig({
     tailwindcss(),
     tsconfigPaths(),
   ],
-   build: {
-    rollupOptions: {
-      external: [
-        /components/header,
-      ]
-    }
-  }
+
 
 })
