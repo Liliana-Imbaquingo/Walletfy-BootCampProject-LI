@@ -15,10 +15,4 @@ export default defineConfig({
     tailwindcss(),
     tsconfigPaths(),
   ],
-  resolve: {
-    alias: {
-      '@components': path.resolve(__dirname, 'src/components'),
-  }
-  }
-
 })
