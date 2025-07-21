@@ -1,11 +1,9 @@
 import React, { useEffect } from 'react'
-
 import { createFileRoute, useNavigate } from '@tanstack/react-router'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 // import { useStore } from '@tanstack/react-form'
 import type { CreateEventType } from '@/types/event'
 import { CreateEventSchema } from '@/types/event'
-
 import DataRepo from '@/api/datasource'
 import { useAppForm } from '@/hooks/form'
 import { notifications } from '@/lib/notification'
