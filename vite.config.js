@@ -12,6 +12,7 @@ export default defineConfig({
   plugins: [
     TanStackRouterVite({ autoCodeSplitting: true }),
     viteReact(),
+    vite-tsconfig-paths(),
     tailwindcss(),
     tsconfigPaths(),
   ],
