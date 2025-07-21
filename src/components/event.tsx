@@ -1,5 +1,5 @@
 
-import { Button, Tooltip } from '@mantine/core'
+import { Tooltip } from '@mantine/core'
 
 import type { EventType } from '@/types/event'
 import { cn } from '@/lib/utils'
