@@ -7,7 +7,8 @@ import type { monthType } from '@/types/month';
 import eventsByMonth from '@/utils/EventsByMonth';
 import { useDebounce } from '@/hooks/debounce';
 import { cn } from '@/lib/utils';
-import SearchInput from '@/components/search';
+import SearchInput from '@/components/Search';
+
 
 export const Route = createFileRoute('/flow-balance')({
   component: RouteComponent,
