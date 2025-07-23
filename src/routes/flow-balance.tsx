@@ -1,16 +1,13 @@
 
 import { createFileRoute } from '@tanstack/react-router'
 import { useMutation, useQuery, useQueryClient} from '@tanstack/react-query'
-// import {  useCallback, useMemo} from 'react';
-import {  useEffect, useState} from 'react';
-
+import {  useCallback, useEffect , useMemo, useState} from 'react';
 import Month from '../components/month';
-// import type { monthType } from '@/types/month';
+import type { monthType } from '@/types/month';
 import eventsByMonth from '@/utils/EventsByMonth';
-// import SearchInput from '@/components/Search';
-// import { useDebounce } from '@/hooks/debounce';
+import { useDebounce } from '@/hooks/debounce';
 import { cn } from '@/lib/utils';
-
+import SearchInput from '@/components/search';
 
 export const Route = createFileRoute('/flow-balance')({
   component: RouteComponent,
@@ -31,10 +28,9 @@ function RouteComponent() {
         queryKey: ["eventsMonth"]
       })
     }
-
   },[])
   
-// const [searchResults, setSearchResults] = useState<Array<monthType>>([]);
+const [searchResults, setSearchResults] = useState<Array<monthType>>([]);
 const [inputValue, setInputValue] = useState(()=>{
   return 0
 });
@@ -50,7 +46,7 @@ const handleSave = () => {
   mutation.mutate(inputValue); 
   };
 
-  /* const visibleMonths = useMemo(() =>{
+  const visibleMonths = useMemo(() =>{
     if(!eventsMonth || eventsMonth.length === 0){
       return []
     }
@@ -60,11 +56,10 @@ const handleSave = () => {
     }
     return searchResults
   },[searchResults,eventsMonth]
-  )*/
+  )
 
-  // const[debouncedSearchValue,setSearchValue, searchValue] =useDebounce('',3000)
-  // const [searchValue, setSearchValue] = useState('');
-  /* const filterMonths = useCallback( function (value:string): Array<monthType>{
+  const[debouncedSearchValue,setSearchValue, searchValue] =useDebounce('',3000)
+  const filterMonths = useCallback( function (value:string): Array<monthType>{
     if(!eventsMonth || eventsMonth.length === 0){
       return []
     }
@@ -74,11 +69,11 @@ const handleSave = () => {
     return eventsMonth.filter((m) => m.name.includes(value) || m.year.toString().includes(value)) 
   },[eventsMonth])
 
-  /* useEffect(() => {
+  useEffect(() => {
     const result = filterMonths(debouncedSearchValue);
     setSearchResults(result);
 
-  },[debouncedSearchValue])*/
+  },[debouncedSearchValue,eventsMonth])
 
   if (isPending) {
     return <div className="p-4">Loading...</div>
@@ -109,17 +104,17 @@ const handleSave = () => {
         )}
         onClick={handleSave}>Calcular</button>
         </div>
-        { /* <SearchInput 
+        <SearchInput 
         value={searchValue} 
-        onChange={(v)=> setSearchValue(v)}/>*/}
-    </div>
-    <h1 className="font-bold text-xl" >You have {eventsMonth.reduce((acc, m) => {
+        onChange={(v)=> setSearchValue(v)}/>
+      </div>
+      <h1 className="font-bold text-xl" >You have {eventsMonth.reduce((acc, m) => {
         const l= m.events.length
         return acc+l
       },0)} events in {eventsMonth.length} months</h1>
       <div className="flex flex-row gap-2">
       { 
-        eventsMonth.map((month) => (
+        visibleMonths.map((month) => (
           <Month key={`${month.year}-${month.month}`} data={month} />
         ))  
       }      
