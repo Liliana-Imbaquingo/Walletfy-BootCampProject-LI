@@ -12,4 +12,10 @@ export default defineConfig({
     TanStackRouterVite({ autoCodeSplitting: true }),
     tailwindcss(),
   ],
+  build: {
+    rollupOptions: {
+      // No externalices @components ni otros alias
+      external: []
+    }
+  }
 })
