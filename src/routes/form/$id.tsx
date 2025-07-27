@@ -44,15 +44,12 @@ function RouteComponent() {
     mutationFn: async (values) => {
       if (mode === 'create') {
         await DataRepo.saveEvent(values)
-        console.log("evento creado:",values )
       } else {
         await DataRepo.updateEvent({
           ...values,
           id: id,
         })
-        console.log("evento actualizado:",values )
       }
-      // await eventsByMonth()
       queryClient.invalidateQueries({
         queryKey: ["eventsMonth"]
       })
@@ -87,7 +84,6 @@ function RouteComponent() {
   const form = useAppForm({
     defaultValues,
     onSubmit: ({ value }) => {
-      console.log('Form submitted with values:', value)
       mutate(value)
     },
     onSubmitInvalid: (errors) => {

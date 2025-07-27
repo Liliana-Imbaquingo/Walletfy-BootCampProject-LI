@@ -5,6 +5,7 @@
 
 Welcome to your new app Walletfy!
 Walletfy is an application that simulates a digital wallet where the user can register the flow of its money through the time, the user can add or update incomes/expenses distribuited by months. Each month is showed with the trasactions that have been done, the total incomes, total expenses, the monthly result and the global amount(accumulated). Also the user can enter an initial amount that represents the money the user has at the beginning of the transactions and it will be added to the global of each month.
+Also you can search the expenses/incomes by year or month.
 
 ### Styling
 

@@ -10,9 +10,7 @@ export const eventsByMonth = async (initialValue:number) => {
     const eventsList: Array<EventType> = await DataRepo.getEvents();
     eventsList.sort((a,b) => parseInt(a.date.replaceAll('-', ''))-parseInt(b.date.replaceAll('-', '')))
     for(const event of eventsList) {
-        
         const [year, month] = event.date.split('-')
-        
         const inc= event.type === 'Income' ? event.amount : 0;
         const exp= event.type === 'Expense' ? event.amount : 0;
         const monthly= inc-exp

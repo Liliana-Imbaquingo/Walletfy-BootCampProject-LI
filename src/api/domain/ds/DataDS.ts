@@ -3,7 +3,6 @@ import type { CreateEventType, EventType, UpdateEventType } from '@/types/event'
 abstract class DataDS {
 
   abstract getEvents(state?: string): Promise<Array<EventType>>
-  // abstract getEvents(date?: string): Promise<Array<EventType>>
 
   abstract getEventById(id: string): Promise<EventType>
 

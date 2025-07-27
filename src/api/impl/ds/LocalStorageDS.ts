@@ -17,7 +17,6 @@ class LocalStorageDS implements DataDS {
       const eventsRaw = localStorage.getItem(EVENTS_KEY) ?? '[]'
 
       const events = JSON.parse(eventsRaw) as Array<EventType>
-      console.log("events:",events )
       return events.filter((event) => {
         if (type) {
           return event.type === type
@@ -26,7 +25,6 @@ class LocalStorageDS implements DataDS {
         return true
       })
     } catch (error) {
-      console.error(error)
       throw new Error('Error loading users')
     }
   }
@@ -47,7 +45,6 @@ class LocalStorageDS implements DataDS {
 
       return event
     } catch (error) {
-      console.error(error)
       throw new Error('Error loading event')
     }
   }
@@ -67,13 +64,11 @@ class LocalStorageDS implements DataDS {
       }
 
       events.push(newEvent)
-      console.log("evento:",newEvent )
 
       localStorage.setItem(EVENTS_KEY, JSON.stringify(events))
 
       return true
     } catch (error) {
-      console.error(error)
       throw new Error('Error saving event')
     }
   }
@@ -101,7 +96,6 @@ class LocalStorageDS implements DataDS {
 
       return true
     } catch (error) {
-      console.error(error)
       throw new Error('Error updating event')
     }
   }

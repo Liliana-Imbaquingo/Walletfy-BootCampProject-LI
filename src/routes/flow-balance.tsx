@@ -35,7 +35,7 @@ const [searchResults, setSearchResults] = useState<Array<monthType>>([]);
 const [inputValue, setInputValue] = useState(()=>{
   return 0
 });
- const mutation = useMutation({
+const mutation = useMutation({
     mutationFn: eventsByMonth,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['eventsMonth'] });

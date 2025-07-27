@@ -9,10 +9,9 @@ const SearchInput: React.FC<SearchInputProps> = (props) => {
 
     return (
         <div>
-            {props.value}
             <TextInput
                 label="Search"
-                placeholder="Month"
+                placeholder="By month or by year"
                 onChange={(e) =>
                     props.onChange(e.target.value)}
                 value={props.value}
