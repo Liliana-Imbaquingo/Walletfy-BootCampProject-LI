@@ -11,9 +11,10 @@ export default function Header() {
   const { theme, setTheme} = useAppStore()
 
   useEffect(() => {
+    console.log("useeffect Header")
       const savedTheme = localStorage.getItem('theme') as 'light' | 'dark'
-        setTheme(savedTheme === 'light' ? 'dark' : 'light')
-        setColorScheme(savedTheme === 'light' ? 'dark' : 'light')
+        setTheme(savedTheme === 'light' ? 'light' : 'dark')
+        setColorScheme(savedTheme === 'light' ? 'light' : 'dark')
   },[])
   
   return (
